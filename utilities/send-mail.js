@@ -40,7 +40,7 @@ exports.notice = (comment) => {
                             siteUrl: process.env.SITE_URL,
                             name: comment.get('nick'),
                             text: comment.get('comment'),
-                            url:  comment.get('url')
+                            url:  process.env.SITE_URL+comment.get('url')
                         });
 
     let mailOptions = {
@@ -78,7 +78,7 @@ exports.send = (currentComment, parentComment)=> {
                             ptext: parentComment.get('comment'),
                             name: currentComment.get('nick'),
                             text: currentComment.get('comment'),
-                            url: currentComment.get('url') + "#" + currentComment.get('pid')
+                            url: process.env.SITE_URL+currentComment.get('url') + "#" + currentComment.get('pid')
                         });
     let mailOptions = {
         from: '"' + process.env.SENDER_NAME + '" <' + process.env.SMTP_USER + '>',
